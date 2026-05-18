@@ -1,2 +1,2 @@
 # pruebaEva2
-Catálogo de videojuegos
+Catálogo de películas
