@@ -1,0 +1,11 @@
+<!-- templates/eliminar_post.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="title">Eliminar post</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p> ¿Estas seguro de eliminar "{{ post.titulo }}"? </p>
+        <input type="submit" value="Confirmar">
+    </form>
+{% endblock content %}

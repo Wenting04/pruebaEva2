@@ -1,0 +1,71 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Django blog</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    </head>
+    <body>
+        <header>
+        <nav class="navbar">
+            <div class="nav-left">
+                <h1><a href="{% url 'home' %}">Inicio</a></h1>
+            </div>
+            
+            {% if user.is_authenticated %}
+            <!-- Autenticación / Inicio de sesión -->
+            <div class="usuario">
+                <div class="botones">
+                    <a href="{% url 'password_change' %}">Cambiar contraseña</a>
+                </div>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            </div>
+            {% else %}
+            <div class="usuario nav-right">
+                <div class="botones">
+                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                    <a href="{% url 'signup' %}">Registrarse</a>
+                </div>
+            </div>
+            {% endif %}
+        </nav>
+        </header>
+
+        <div class="banner">
+        {% if user.is_authenticated %}
+            <div class="usuario nav-left">
+                <span class="user-info">Hola, {{ user.username }}</span>
+            </div>
+            <div class="nav-right botones">
+                <a href="{% url 'nuevo_post' %}">Añadir Película/Post</a>
+            </div>
+        {% else %}
+            <div class="usuario nav-left">
+                <span class="user-info">No has iniciado sesión</span>
+            </div>
+        {% endif %}
+        </div>
+
+        {% if messages %}
+        <div class="banner">
+            <div class="mensajes-sistema nav-left">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div>
+            {% block content %} {% endblock content %}
+        </div>
+    </body>
+</html>

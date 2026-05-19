@@ -1,0 +1,207 @@
+/* static/css/base.css */
+:root {
+    --color-boton: #2563eb;       
+    --color-boton-hover: #1d4ed8; 
+    
+    --color-titulo: #dc2626;      
+    --color-titulo-hover: #b91c1c; 
+    
+    --color-sinopsis: #f1f5f9;    
+    
+    /* Para los contenedores (divs y header)*/
+    --color-fondo: #ffffff;       
+    
+    /* Texto en botones */
+    --color-texto: #ffffff; 
+}
+
+/* --- ESTILOS GENERALES Y BASE --- */
+body {
+    background-color: var(--color-sinopsis);
+    font-family: Arial, sans-serif;
+    padding: 5px;
+}
+
+/* Agrupado: Estilos comunes para contenedores estructurales */
+header, .banner, div:not(.nav-left):not(.nav-right) {
+    background-color: var(--color-fondo);
+    border-radius: 5px;
+}
+
+header, .banner {
+    margin: 10px 0;
+    padding: 5px 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+div:not(.nav-left):not(.nav-right) {
+    padding: 1px 5px;
+}
+
+/* --- COMPONENTES DE NAVEGACIÓN --- */
+.navbar, .banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.nav-right {
+    margin-left: auto;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.usuario p {
+    margin-right: auto;
+}
+
+/* Evita que form del logout herede los márgenes y gaps de los formularios normales */
+.usuario form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- TEXTOS Y ENLACES --- */
+header h1 a {
+    border-radius: 5px;
+    padding: 5px;
+    color: var(--color-titulo);
+    text-decoration: none;
+}
+
+.title {
+    text-align: center;
+}
+
+/* Estilos comunes para elementos tipo botón */
+.botones a, button {
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--color-boton);
+    color: var(--color-texto);
+    font-size: 1rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 2.2rem;
+}
+
+.botones a {
+    text-decoration: none;
+    transition: background-color 0.2s;
+    display: inline-flex; 
+    align-items: center;
+}
+
+button {
+    border: none;
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Hovers de botones */
+.botones a:hover, button:hover {
+    background-color: var(--color-boton-hover);
+}
+
+/* Evita conflicto de herencia: el hover del botón se mantiene blanco */
+.botones a:hover {
+    color: var(--color-texto);
+}
+
+/* Hover general para enlaces que no son botones */
+a:hover {
+    color: var(--color-titulo-hover);
+}
+
+/* --- CONTENIDO DEL POST --- */
+.post-entry {
+    background-color: var(--color-fondo);
+    margin: 20px 10px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-entry ul {
+    list-style: "- ";
+}
+
+.post-entry a {
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.post-middle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.post-content {
+    flex: 1 1 0;
+}
+
+.info-post dt {
+    padding-left: 5px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.info-post dd {
+    margin-left: 20px;
+    color: #334155;
+    line-height: 1.5;
+}
+
+.post-image img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* --- FORMULARIOS --- */
+
+/* Contenedor del formulario principal */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+/* Estilo para los campos de texto, áreas de texto y selectores */
+input, textarea, select {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    background-color: var(--color-fondo);
+    font-size: 0.95rem;
+    color: #334155;     /* Texto dentro */
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--color-boton);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); 
+    background-color: var(--color-fondo);
+}
+
+textarea {
+    max-width: 100%;
+    height: 50px;
+    min-height: 35px;
+}

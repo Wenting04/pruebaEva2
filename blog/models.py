@@ -5,11 +5,15 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+# Determina qué se va a guardar en la base de datos
+# Y cómo se va a mostrar en el panel de administración
 
 class Post(models.Model):
     titulo      = models.CharField(max_length=200)
-    anno        = models.DateField(blank=True, null=True)
-    duracion    = models.PositiveIntegerField(blank=True, null=True)
+    anno        = models.PositiveIntegerField(blank=True, null=True, 
+        help_text="Formato de 4 dígitos" )
+    duracion    = models.PositiveIntegerField(blank=True, null=True,
+        help_text="Minutos" )
     pais        = models.CharField(max_length=200, blank=True)
     direccion   = models.CharField(max_length=200, blank=True)
     guion       = models.TextField(default='', blank=True)
@@ -17,12 +21,12 @@ class Post(models.Model):
     generos     = models.TextField(default='', blank=True)
     sinopsis    = models.TextField(default='', blank=True)
     fecha       = models.DateTimeField(auto_now_add=True) # Del sistema
-
     autor       = models.ForeignKey(
         "auth.User",
         on_delete=models.CASCADE,
     )
     imagen = models.ImageField(upload_to='posts/', blank=True, null=True)
+    # Es decir, las imágenes estarían 
 
     def duracion_formateada(self):
         if self.duracion is not None:

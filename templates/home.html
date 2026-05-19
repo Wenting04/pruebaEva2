@@ -1,0 +1,14 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    {% for post in post_list %} <!-- Nuestro modelo es POst, el objeto de contexto será post_list -->
+        <div class="post-entry">
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></h2>
+                <ul>
+                    <li>Autor del post: {{ post.autor }}</li>
+                    <li>Fecha del post: {{ post.fecha }}</li>
+                </ul>
+        </div>
+    {% endfor %}
+{% endblock content %}

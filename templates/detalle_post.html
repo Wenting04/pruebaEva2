@@ -1,0 +1,56 @@
+<!-- templates/detalle_post.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<!-- El nombre del objeto de contexto en DetailView tmb tiene como valor predeterminado el nombre del modelo
+    Es decir, podemos usar post y object -->
+    <div class="post-entry"> 
+        <h2 class="title">{{ object.titulo }}</h2>
+
+        <div class="post-top">
+            <p><strong>Autor del post:</strong> {{ post.autor }}</p>
+            <p><strong>Fecha del post:</strong> {{ object.fecha }}</p>
+        </div>
+
+        <!-- Parte superior: datos + imagen -->
+        <div class="post-middle">
+            <div class="post-content">
+                <!-- Imprime todos los datos SÓLO si no están vacíos y no es sinopsis (este se imprime abajo) -->
+                {% for nombre, valor in post.campos_no_vacios %}
+                    {# Pasamos 'nombre' a minúsculas y comparamos #}
+                    {% if valor and nombre.lower != "sinopsis" %}
+                            <dl class="info-post">
+                                <dt>{{ nombre }}</dt>
+                                <dd>{{ valor|linebreaksbr }}</dd>
+                            </dl>
+                        {% endif %}
+                {% endfor %}
+            </div>
+
+            {% if object.imagen %}
+                <div class="post-image">
+                    <img src="{{ object.imagen.url }}" alt="{{ object.titulo }}">
+                </div>
+            {% endif %}
+            
+        </div>
+        
+        <!-- Parte inferior: sinopsis -->
+        <div class="post-sinopsis">
+            <h3>Sinopsis</h3>
+            <p>{{ object.sinopsis|linebreaksbr }}</p>
+            <!-- Sólo respetar saltos de línea: linebreaksbr
+                Crer nuevos párrafos: linebreaks -->
+        </div>
+    </div>
+    {% if user.is_authenticated     and     user == post.autor   or   user.is_staff   or   user.is_superuser %}
+    <!-- Botones se muestran sólo si usuario loggeado es:
+    1. El/La autor/a
+    2. Usuario Staff
+    3. Super usuario -->
+        <div class="botones detalles">
+            <a href="{% url 'actualizar_post' object.pk %}">+ Editar Post</a>
+            <a href="{% url 'eliminar_post' object.pk %}">- Eliminar Post</a>
+        </div>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,11 @@
+<!-- templates/nuevo_post.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="title">Nuevo post</h2>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %} <!-- Protege formulario de falsificación de solicitudes entre sitios -->
+    {{ form.as_p }}
+    <input type="submit" value="Guardar">
+</form>
+{% endblock content %}
