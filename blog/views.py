@@ -57,7 +57,7 @@ class VistaActualizarPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         """ Redirige al detalle_post después de actualizar correctamente """
-        return reverse_lazy("detalle_post", pk=self.get_object().pk)
+        return reverse_lazy("detalle_post", kwargs={"pk": self.get_object().pk})
 
     # Incluso si no mostramos los usuarios, debemos de obtenerlo sí o sí por la función de form
     # Donde busca un usuario
