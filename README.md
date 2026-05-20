@@ -12,6 +12,7 @@ El proyecto se encuentra operativo en: [PythonAnywhere](https://wenting.pythonan
 * ** Gestión de Contenido (CRUD Completo):** Los usuarios autorizados pueden **Crear, Leer, Actualizar y Borrar** (CRUD) posts de películas directamente desde la interfaz web.
 * ** Seguridad en las Acciones:** Control a nivel de servidor; un usuario normal sólo puede modificar o eliminar las películas que él mismo ha publicado, mientras que el Staff/Admin tiene control total.
 * ** Soporte Multimedia:** Permite la subida de imágenes de portada para cada película mediante el manejo de archivos `media`.
+* ** Sistema de Búsqueda y Filtrado:** Implementado una barra de búsqueda dinámica que permite filtrar películas por título o sinopsis utilizando QuerySets, filter(), icontains y Q objects.
 
 ## Tecnologías Utilizadas
 
