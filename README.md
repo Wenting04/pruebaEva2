@@ -4,6 +4,8 @@ Este proyecto es una aplicación web dinámica en **Django** que funciona como u
 
 El proyecto se encuentra operativo en: [PythonAnywhere](https://wenting.pythonanywhere.com/)
 
+Participantes: Pengyu Ye, Qixian Guan, Wenting Zhang
+
 ---
 
 ## Características Principales
