@@ -1,7 +1,7 @@
 <!-- templates/home.html -->
 {% extends "base.html" %} {% block content %}
     <div class="search-container" style="margin-bottom: 20px">
-    <form method="get" action="">
+    <form method="get" action="" class="d-flex gap-2 align-items-center">
         <input
             type="text"
             name="q"
@@ -9,10 +9,11 @@
             value="{{ request.GET.q }}"
             style="padding: 8px; width: 300px"
         />
-        <button type="submit" style="padding: 8px 15px">Buscar</button>
+        <button type="submit" style="padding: 8px 15px" class="btn btn-primary" >Buscar</button> 
+        <!-- Añadir estilo de Bootstrap, que el botón tenga el color primario(azul) -->
 
         {% if request.GET.q %}
-        <a href="{% url 'home' %}" style="margin-left: 10px; color: gray"
+        <a href="{% url 'home' %}" style="margin-left: 10px; color: gray "
         >Limpiar búsqueda</a
         >
         {% endif %}
@@ -30,7 +31,9 @@
     </div>
 
     {% empty %}
-        <p>No se encontraron películas que coincidan con tu búsqueda.</p>
+        <div class="alert alert-danger">
+            No se encontraron películas que coincidan con tu búsqueda.
+        </div>
     {% endfor %}
     
 {% endblock content %}

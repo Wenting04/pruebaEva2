@@ -7,14 +7,17 @@
     <div class="post-entry"> 
         <h2 class="title">{{ object.titulo }}</h2>
 
-        <div class="post-top">
+        <div class="post-top  d-flex justify-content-between text-muted border-bottom pb-3 mb-4"> 
+            <!-- coloca los elementos separados horizontalmente. añadir padding y margen inferior. 
+            Añadir una linea para separacion(border-bottom)-->
             <p><strong>Autor del post:</strong> {{ post.autor }}</p>
             <p><strong>Fecha del post:</strong> {{ object.fecha }}</p>
         </div>
 
         <!-- Parte superior: datos + imagen -->
-        <div class="post-middle">
-            <div class="post-content">
+        <div class="post-middle ">
+            <div class="post-content col-md-7">
+                <!--el contenido ocupe 7 columnas de 12 en pantallas medianas o grandes md(medium) -> 7/12-->
                 <!-- Imprime todos los datos SÓLO si no están vacíos y no es sinopsis (este se imprime abajo) -->
                 {% for nombre, valor in post.campos_no_vacios %}
                     {# Pasamos 'nombre' a minúsculas y comparamos #}
@@ -29,7 +32,8 @@
 
             {% if object.imagen %}
                 <div class="post-image">
-                    <img src="{{ object.imagen.url }}" alt="{{ object.titulo }}">
+                    <img src="{{ object.imagen.url }}" alt="{{ object.titulo }}" class="img-thumbnail">
+                    <!-- img-thumbnail es una clase de Bootstrap que añade un borde y un poco de padding a la imagen -->
                 </div>
             {% endif %}
             
@@ -49,8 +53,8 @@
     2. Usuario Staff
     3. Super usuario -->
         <div class="botones detalles">
-            <a href="{% url 'actualizar_post' object.pk %}">+ Editar Post</a>
-            <a href="{% url 'eliminar_post' object.pk %}">- Eliminar Post</a>
+            <a href="{% url 'actualizar_post' object.pk %}" class="btn btn-warning">+ Editar Post</a>
+            <a href="{% url 'eliminar_post' object.pk %}" class="btn btn-danger">- Eliminar Post</a>
         </div>
     {% endif %}
 {% endblock content %}

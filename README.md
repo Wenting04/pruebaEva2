@@ -13,7 +13,7 @@ El proyecto se encuentra operativo en: [PythonAnywhere](https://wenting.pythonan
 * ** Seguridad en las Acciones:** Control a nivel de servidor; un usuario normal sólo puede modificar o eliminar las películas que él mismo ha publicado, mientras que el Staff/Admin tiene control total.
 * ** Soporte Multimedia:** Permite la subida de imágenes de portada para cada película mediante el manejo de archivos `media`.
 * ** Sistema de Búsqueda y Filtrado:** Implementado una barra de búsqueda dinámica que permite filtrar películas por título o sinopsis utilizando QuerySets, filter(), icontains y Q objects.
-
+* ** Integración de un Frameworks CSS:** En este apartado he utilizado el Bootstrap para cambiar un poco de css. Como los estilos de botones, con el color que tenga Bootstrap (warning, danger ,primary). El fondo de body con un gris claro. Mejorar la distribución de elementos y mejorar la presentación de imágenes con "img-thumbnail"
 ## Tecnologías Utilizadas
 
 * **Backend:** Python 3.13 / Django 5.0.x

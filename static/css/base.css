@@ -83,12 +83,13 @@ header h1 a {
 }
 
 /* Estilos comunes para elementos tipo botón */
+
 .botones a, button {
     margin: 5px;
     padding: 5px 10px;
     border-radius: 5px;
-    background-color: var(--color-boton);
-    color: var(--color-texto);
+    /*background-color: var(--color-boton);*/
+    /*color: var(--color-texto);*/
     font-size: 1rem;
     cursor: pointer;
     box-sizing: border-box;
@@ -108,10 +109,10 @@ button {
     line-height: 1;
 }
 
-/* Hovers de botones */
+/* Hovers de botones 
 .botones a:hover, button:hover {
     background-color: var(--color-boton-hover);
-}
+}*/
 
 /* Evita conflicto de herencia: el hover del botón se mantiene blanco */
 .botones a:hover {
