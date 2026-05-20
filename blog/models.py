@@ -26,7 +26,8 @@ class Post(models.Model):
         on_delete=models.CASCADE,
     )
     imagen = models.ImageField(upload_to='posts/', blank=True, null=True)
-    # Es decir, las imágenes estarían 
+    # ImageField permite guardar imágenes asociadas a cada registro.
+    # upload_to define la carpeta donde se almacenan las imágenes, estarían media/posts/
 
     def duracion_formateada(self):
         if self.duracion is not None:

@@ -12,8 +12,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.contrib import messages
 from django.shortcuts import redirect
-
+from django.db.models import Q
+# Q permite realizar consultas complejas usando operadores logicos como or, and
 from .forms import PostForm
+
 
 # = == CRUD == = #
 
@@ -21,6 +23,23 @@ from .forms import PostForm
 class VistaListaPosts(ListView):
     model = Post
     template_name = "home.html"
+
+    def get_queryset(self):
+
+        # super().get_queryset() aplica después filtros personalizados
+        queryset = super().get_queryset()
+
+        # Capturar lo que el usuario escribe
+        query = self.request.GET.get("q")
+        
+        # Q permite combinar condiciones usando operadores or. Filtra por titulo o sinopsis
+        # icontains permite realizar búsquedas sin distinguir mayúsculas y minúsculas.
+        if query:
+            queryset = queryset.filter(
+                Q(titulo__icontains=query) | Q(sinopsis__icontains=query)
+            )
+
+        return queryset
 
 # READ uno
 class VistaDetallePost(DetailView):

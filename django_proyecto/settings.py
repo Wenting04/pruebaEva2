@@ -140,6 +140,8 @@ LOGOUT_REDIRECT_URL = "home"
 
 # Ruta para archivos multimedia
 # Directorio donde se almacenará los archivos cargados #
+# MEDIA_URL define la URL pública de acceso a los archivos multimedia.
 MEDIA_URL = '/media/'
 # Ruta absoluta del sistema de archivos al directorio donde se almacenará los archivos cargados #
 MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_ROOT define la carpeta física donde Django guarda las imágenes subidas por los usuarios.
